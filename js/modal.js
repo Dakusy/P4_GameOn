@@ -15,6 +15,13 @@ const modalClose = document.querySelector(".close");
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
+const birthDate = document.querySelector("#birthdate");
+const quantity = document.querySelector("#quantity");
+const radio = document.querySelectorAll("input[name='location']");
+const checkbox1 = document.querySelector("#checkbox1");
+const modalSucces = document.querySelector(".content");
+const modalSubmit = document.querySelector(".btn-submit");
+const modal = document.querySelector(".form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
