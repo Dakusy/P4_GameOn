@@ -87,3 +87,84 @@ email.addEventListener('blur', function () {
   checkEmail(email);
 });
 
+function checkBirthDate(birthDate) {
+  const regDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+  if (regDate.test(birthDate.value)) {
+    birthDate.parentNode.dataset.errorVisible = false;
+    return true
+  } else {
+    birthDate.parentNode.dataset.error = "Veuillez saisir votre date de naissance";
+    birthDate.parentNode.dataset.errorVisible = true;
+    return false
+  }
+};
+
+birthDate.addEventListener('blur', function () {
+  checkBirthDate(birthDate);
+});
+
+function checkQuantity(quantity) {
+  const regNumber = /^[0-9]$/;
+  if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 99)) {
+    quantity.parentNode.dataset.errorVisible = false;
+    return true
+  } else {
+    quantity.parentNode.dataset.error = "Veuillez saisir un nombre";
+    quantity.parentNode.dataset.errorVisible = true;
+    return false
+  }
+};
+
+quantity.addEventListener('blur', function () {
+  checkQuantity(quantity);
+});
+
+function validateModalSubmit() {
+  // check of each function input of the form
+  if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) &&
+    checkBirthDate(birthDate) && checkQuantity(quantity)) {
+    // display none the modal
+    modal.style.display = "none";
+    // launch new modal
+    launchModalSuccess()
+  } else {
+    // else show all errorVisible of each else functions
+    checkFirstName(firstName);
+    checkLastName(lastName);
+    checkEmail(email);
+    checkBirthDate(birthDate);
+    checkQuantity(quantity);
+  }
+};
+
+modalSubmit.addEventListener('click', function (e) {
+  e.preventDefault();
+  validateModalSubmit();
+});
+
+
+function launchModalSuccess() {
+  // create a new modal in a variable
+  let newModal = document.createElement('p');
+  newModal.style.height = '600px';
+  newModal.style.fontSize = '30px';
+  newModal.style.color = 'white';
+  newModal.style.fontWeight = "100";
+  newModal.style.display = 'block';
+  newModal.style.textAlign = 'center';
+  newModal.style.padding = "250px 136px 0 136px";
+  // show the new modal
+  modalSucces.appendChild(newModal)
+  newModal.textContent = "Merci pour votre inscription"
+  // button 
+  let buttonBack = document.createElement('div');
+  buttonBack.className = 'button btn-submit';
+  buttonBack.textContent = "Fermer";
+  buttonBack.style.width = "40%";
+  buttonBack.style.fontWeight = "100";
+  buttonBack.style.marginBottom = "20px";
+  modalSucces.appendChild(buttonBack)
+  buttonBack.addEventListener("click", function () {
+    modalbg.style.display = "none";
+  })
+};
