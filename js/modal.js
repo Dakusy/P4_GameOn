@@ -37,7 +37,7 @@ modalClose.addEventListener("click", closeModal => {
 })
 
 
-
+//Vérification prénom/nom fonction
 const checkName=(name, type) =>{
   const regText = /[a-zA-ZÀ-ÿ]{2}/;
   if (regText.test(name.value)) {
@@ -50,14 +50,17 @@ const checkName=(name, type) =>{
   }
 };
 
+//Event si le le prénom est mauvais
 firstName.addEventListener('blur', function () {
   checkName(firstName,"prénom");
 });
 
+//Event si le nom est mauvais
 lastName.addEventListener('blur', function () {
   checkName(lastName,"nom");
 });
 
+//Vérification email fonction
 const checkEmail=(email) =>{
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
   if (regEmail.test(email.value)) {
