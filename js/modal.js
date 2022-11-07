@@ -171,7 +171,7 @@ function launchModalSuccess() {
   newModal.style.textAlign = 'center';
   newModal.style.padding = "250px 136px 0 136px";
   modalSucces.appendChild(newModal)
-  newModal.textContent = "Merci ! Votre réservation a été reçue."
+  newModal.textContent = "Merci ! Votre inscription a été reçue."
   let buttonBack = document.createElement('div');
   buttonBack.className = 'button btn-submit';
   buttonBack.textContent = "Fermer";
